@@ -1,7 +1,7 @@
 {
     "name": "vscode-audit-bookmarks",
     "displayName": "Audit Bookmarks",
-    "description": "Naviguer facilement entre les annotations d'audit dans vos fichiers",
+    "description": "Navigate easily between audit annotations in your files",
     "version": "0.1.0",
     "license": "GPLv3",
     "keywords": [
