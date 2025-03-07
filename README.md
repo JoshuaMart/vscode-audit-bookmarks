@@ -1,52 +1,56 @@
 # Audit Bookmarks
 
-Navigation facile entre annotations d'audit dans vos fichiers de code.
+<img width="350" alt="audit_bookmarks_icon" src="images/icon.png">
 
-## Fonctionnalités
+Easy navigation between audit annotations in your code files.
 
-* Marquez des points d'intérêt dans votre code avec des tags spécifiques qui sont automatiquement convertis en signets
-* Accédez à un onglet dédié dans la barre d'activité de VS Code pour visualiser et naviguer facilement entre les signets
-* Utilisez différentes catégories d'annotation adaptées au audit de sécurité et d'optimisation
+## Features
 
-## Tags d'audit supportés
+* Mark points of interest in your code with specific tags that are automatically converted into bookmarks
+* Access a dedicated tab in the VS Code activity bar to easily view and navigate between bookmarks
+* Use different annotation categories adapted for security and optimization audits
 
-* `@audit-note` - (bleu) Notes générales
-* `@audit-info` - (bleu) Informations générales
-* `@audit-gas` - (violet) Annotations relatives à l'optimisation de gas
-* `@audit-low` - (vert) Problèmes de sévérité faible
-* `@audit-medium` - (jaune) Problèmes de sévérité moyenne
-* `@audit-high` - (orange) Problèmes de sévérité élevée
-* `@audit-critical` - (rouge) Problèmes de sévérité critique
+## Supported Audit Tags
 
-## Tour d'horizon
+* `@audit-note` - (blue) General notes
+* `@audit-info` - (blue) General information
+* `@audit-gas` - (purple) Gas optimization annotations
+* `@audit-low` - (green) Low severity issues
+* `@audit-medium` - (yellow) Medium severity issues
+* `@audit-high` - (orange) High severity issues
+* `@audit-critical` - (red) Critical severity issues
 
-## Comment l'utiliser
+## Overview
 
-1. Ajoutez des annotations dans votre code avec les tags supportés:
+![Audit bookmarks interface](images/screenshot.png)
+
+## How to Use
+
+1. Add annotations in your code with the supported tags:
    ```solidity
    function transfer(address to, uint256 amount) public {
-       // @audit-medium Manque de vérification de l'adresse null
-       // @audit-gas Possibilité d'optimiser en utilisant unchecked
+       // @audit-medium Missing null address check
+       // @audit-gas Opportunity to optimize using unchecked
        balances[msg.sender] -= amount;
        balances[to] += amount;
    }
    ```
 
-2. Cliquez sur l'icône dans la barre d'activité pour ouvrir le panneau des signets d'audit
+2. Click on the icon in the activity bar to open the audit bookmarks panel
 
-3. Naviguez entre les signets en cliquant sur les entrées dans le panneau ou utilisez les raccourcis pour passer au signet précédent/suivant
+3. Navigate between bookmarks by clicking on entries in the panel or use shortcuts to move to the previous/next bookmark
 
-## Commandes disponibles
+## Available Commands
 
-* `Audit Bookmarks: Jump to Previous` - Aller au signet précédent
-* `Audit Bookmarks: Jump to Next` - Aller au signet suivant
-* `Audit Bookmarks: Filter View...` - Filtrer les signets affichés
-* `Audit Bookmarks: Toggle: Show Bookmarks for Visible Editors / All Files` - Basculer l'affichage entre tous les fichiers et uniquement les éditeurs visibles
-* `Audit Bookmarks: Scan Workspace for Bookmarks` - Scanner l'espace de travail à la recherche de signets
+* `Audit Bookmarks: Jump to Previous` - Go to previous bookmark
+* `Audit Bookmarks: Jump to Next` - Go to next bookmark
+* `Audit Bookmarks: Filter View...` - Filter displayed bookmarks
+* `Audit Bookmarks: Toggle: Show Bookmarks for Visible Editors / All Files` - Toggle display between all files and only visible editors
+* `Audit Bookmarks: Scan Workspace for Bookmarks` - Scan the workspace for bookmarks
 
-## Configuration personnalisée
+## Custom Configuration
 
-Vous pouvez personnaliser les couleurs et styles des signets dans les paramètres de l'extension:
+You can customize bookmark colors and styles in the extension settings:
 
 ```json
 "audit-bookmarks.expert.custom.styles": {
@@ -69,4 +73,4 @@ GPLv3
 
 ---
 
-Basé sur le travail de [tintinweb/vscode-inline-bookmarks](https://github.com/tintinweb/vscode-inline-bookmarks)
+Based on the work of [tintinweb/vscode-inline-bookmarks](https://github.com/tintinweb/vscode-inline-bookmarks)
