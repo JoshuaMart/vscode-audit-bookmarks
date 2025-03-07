@@ -43,7 +43,7 @@
                 {
                     "id": "audit-bookmarks",
                     "title": "Audit Bookmarks",
-                    "icon": "images/icon.png"
+                    "icon": "$(bookmark)"
                 }
             ]
         },
@@ -52,52 +52,37 @@
                 "command": "auditBookmarks.refresh",
                 "title": "Quick-Refresh View",
                 "category": "AuditBookmarks",
-                "icon": {
-                    "light": "images/refresh-light.svg",
-                    "dark": "images/refresh-dark.svg"
-                }
+                "icon": "$(refresh)"
             },
             {
                 "command": "auditBookmarks.toggleShowVisibleFilesOnly",
                 "title": "Toggle: Show Bookmarks for Visible Editors / All Files",
                 "category": "AuditBookmarks",
-                "icon": {
-                    "light": "images/toggle-files-light.svg",
-                    "dark": "images/toggle-files-dark.svg"
-                }
+                "icon": "$(file-symlink-file)"
             },
             {
                 "command": "auditBookmarks.toggleViewKeepFilesExpanded",
                 "title": "Toggle: Keep File View expanded",
                 "category": "AuditBookmarks",
-                "icon": "images/toggle-expanded.svg"
+                "icon": "$(expand-all)"
             },
             {
                 "command": "auditBookmarks.jumpToPrevious",
                 "title": "Jump to Previous",
                 "category": "AuditBookmarks",
-                "icon": {
-                    "light": "images/jump-previous.svg",
-                    "dark": "images/jump-previous-dark.svg"
-                }
+                "icon": "$(arrow-up)"
             },
             {
                 "command": "auditBookmarks.jumpToNext",
                 "title": "Jump to Next",
                 "category": "AuditBookmarks",
-                "icon": {
-                    "light": "images/jump-next.svg",
-                    "dark": "images/jump-next-dark.svg"
-                }
+                "icon": "$(arrow-down)"
             },
             {
                 "command": "auditBookmarks.setTreeViewFilterWords",
                 "title": "Filter View ...",
                 "category": "AuditBookmarks",
-                "icon": {
-                    "light": "images/filter-light.svg",
-                    "dark": "images/filter-dark.svg"
-                }
+                "icon": "$(filter)"
             },
             {
                 "command": "auditBookmarks.showSelectBookmark",
@@ -123,10 +108,7 @@
                 "command": "auditBookmarks.scanWorkspace",
                 "title": "Scan Workspace for Bookmarks",
                 "category": "AuditBookmarks",
-                "icon": {
-                    "light": "images/scan-workspace.svg",
-                    "dark": "images/scan-workspace-dark.svg"
-                }
+                "icon": "$(search)"
             },
             {
                 "command": "auditBookmarks.debug.state.reset",
