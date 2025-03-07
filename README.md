@@ -1,7 +1,5 @@
-# Audit Bookmarks
-
 <p align="center">
-  <img alt="audit_bookmarks_icon" src="https://github.com/user-attachments/assets/e2255381-1f50-4b7a-8dbb-565e2b9051c3">
+  <img alt="audit_bookmarks_icon" src="https://github.com/user-attachments/assets/3ba08d41-3840-4320-8501-2c33838bfabc">
 </p>
 
 
