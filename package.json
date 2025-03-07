@@ -1,0 +1,458 @@
+{
+    "name": "vscode-audit-bookmarks",
+    "displayName": "Audit Bookmarks",
+    "description": "Naviguer facilement entre les annotations d'audit dans vos fichiers",
+    "version": "0.1.0",
+    "license": "GPLv3",
+    "keywords": [
+        "bookmark",
+        "bookmarks",
+        "audit",
+        "audit-tag",
+        "tag",
+        "security",
+        "mark",
+        "navigation",
+        "highlight"
+    ],
+    "publisher": "JoshuaMart",
+    "engines": {
+        "vscode": "^1.20.2"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "*",
+        "onView:auditBookmarksExplorer",
+        "onCommand:auditBookmarks.jumpToRange",
+        "onCommand:auditBookmarks.refresh",
+        "onCommand:auditBookmarks.toggleShowVisibleFilesOnly",
+        "onCommand:auditBookmarks.toggleViewKeepFilesExpanded",
+        "onCommand:auditBookmarks.debug.state.reset",
+        "onCommand:auditBookmarks.showSelectBookmark",
+        "onCommand:auditBookmarks.showSelectVisibleBookmark",
+        "onCommand:auditBookmarks.listBookmarks",
+        "onCommand:auditBookmarks.listVisibleBookmarks",
+        "onCommand:auditBookmarks.scanWorkspace"
+    ],
+    "main": "./src/extension.js",
+    "contributes": {
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "audit-bookmarks",
+                    "title": "Audit Bookmarks",
+                    "icon": "images/icon.png"
+                }
+            ]
+        },
+        "commands": [
+            {
+                "command": "auditBookmarks.refresh",
+                "title": "Quick-Refresh View",
+                "category": "AuditBookmarks",
+                "icon": {
+                    "light": "images/refresh-light.svg",
+                    "dark": "images/refresh-dark.svg"
+                }
+            },
+            {
+                "command": "auditBookmarks.toggleShowVisibleFilesOnly",
+                "title": "Toggle: Show Bookmarks for Visible Editors / All Files",
+                "category": "AuditBookmarks",
+                "icon": {
+                    "light": "images/toggle-files-light.svg",
+                    "dark": "images/toggle-files-dark.svg"
+                }
+            },
+            {
+                "command": "auditBookmarks.toggleViewKeepFilesExpanded",
+                "title": "Toggle: Keep File View expanded",
+                "category": "AuditBookmarks",
+                "icon": "images/toggle-expanded.svg"
+            },
+            {
+                "command": "auditBookmarks.jumpToPrevious",
+                "title": "Jump to Previous",
+                "category": "AuditBookmarks",
+                "icon": {
+                    "light": "images/jump-previous.svg",
+                    "dark": "images/jump-previous-dark.svg"
+                }
+            },
+            {
+                "command": "auditBookmarks.jumpToNext",
+                "title": "Jump to Next",
+                "category": "AuditBookmarks",
+                "icon": {
+                    "light": "images/jump-next.svg",
+                    "dark": "images/jump-next-dark.svg"
+                }
+            },
+            {
+                "command": "auditBookmarks.setTreeViewFilterWords",
+                "title": "Filter View ...",
+                "category": "AuditBookmarks",
+                "icon": {
+                    "light": "images/filter-light.svg",
+                    "dark": "images/filter-dark.svg"
+                }
+            },
+            {
+                "command": "auditBookmarks.showSelectBookmark",
+                "title": "Select Bookmark",
+                "category": "AuditBookmarks"
+            },
+            {
+                "command": "auditBookmarks.showSelectVisibleBookmark",
+                "title": "Select Visible Bookmark",
+                "category": "AuditBookmarks"
+            },
+            {
+                "command": "auditBookmarks.listBookmarks",
+                "title": "List Bookmarks",
+                "category": "AuditBookmarks"
+            },
+            {
+                "command": "auditBookmarks.listVisibleBookmarks",
+                "title": "List Visible Bookmarks",
+                "category": "AuditBookmarks"
+            },
+            {
+                "command": "auditBookmarks.scanWorkspace",
+                "title": "Scan Workspace for Bookmarks",
+                "category": "AuditBookmarks",
+                "icon": {
+                    "light": "images/scan-workspace.svg",
+                    "dark": "images/scan-workspace-dark.svg"
+                }
+            },
+            {
+                "command": "auditBookmarks.debug.state.reset",
+                "title": "Reset the internal state to fix potential problems",
+                "category": "AuditBookmarks:Debug"
+            }
+        ],
+        "views": {
+            "audit-bookmarks": [
+                {
+                    "id": "auditBookmarksExplorer",
+                    "name": "Audit Bookmarks"
+                }
+            ]
+        },
+        "menus": {
+            "view/title": [
+                {
+                    "command": "auditBookmarks.jumpToPrevious",
+                    "when": "view == auditBookmarksExplorer",
+                    "group": "navigation@1"
+                },
+                {
+                    "command": "auditBookmarks.jumpToNext",
+                    "when": "view == auditBookmarksExplorer",
+                    "group": "navigation@2"
+                },
+                {
+                    "command": "auditBookmarks.setTreeViewFilterWords",
+                    "when": "view == auditBookmarksExplorer",
+                    "group": "navigation@3"
+                },
+                {
+                    "command": "auditBookmarks.toggleShowVisibleFilesOnly",
+                    "when": "view == auditBookmarksExplorer",
+                    "group": "navigation@4"
+                },
+                {
+                    "command": "auditBookmarks.refresh",
+                    "when": "view == auditBookmarksExplorer",
+                    "group": "navigation@5"
+                },
+                {
+                    "command": "auditBookmarks.scanWorkspace",
+                    "when": "view == auditBookmarksExplorer",
+                    "group": "navigation@6"
+                }
+            ]
+        },
+        "configuration": {
+            "type": "object",
+            "title": "Audit Bookmarks",
+            "properties": {
+                "audit-bookmarks.enable": {
+                    "category": "general",
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable/Disable the extension."
+                },
+                "audit-bookmarks.view.showVisibleFilesOnly": {
+                    "category": "view",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Show bookmarks for visible editors/files only."
+                },
+                "audit-bookmarks.view.showVisibleFilesOnlyMode": {
+                    "category": "view",
+                    "type": "string",
+                    "enum": [
+                        "allVisibleEditors",
+                        "onlyActiveEditor"
+                    ],
+                    "default": "allVisibleEditors",
+                    "description": "Select 'Show Visible editors only' mode. Either show bookmarks for all visible editors or only for the currently selected editor. default: All Visible Editors"
+                },
+                "audit-bookmarks.view.expanded": {
+                    "category": "view",
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Keep File View expanded otherwise collapsed."
+                },
+                "audit-bookmarks.view.follow": {
+                    "category": "view",
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Follow bookmarks while clicking in the editor window. Highlights nearest bookmarks in the bookmarks view. (see `view.followMode` to change the follow behavior)"
+                },
+                "audit-bookmarks.view.followMode": {
+                    "category": "view",
+                    "type": "string",
+                    "enum": [
+                        "nearest",
+                        "chapter"
+                    ],
+                    "default": "nearest",
+                    "markdownDescription": "Follow mode for highlighting bookmarks in the bookmarks view. **nearest** (Default): highlight nearest bookmark relative to the current selection. **chapter**: highlight nearest bookmark before or on the currently selected line."
+                },
+                "audit-bookmarks.view.lineMode": {
+                    "category": "view",
+                    "type": "string",
+                    "enum": [
+                        "selected-bookmark",
+                        "current-line"
+                    ],
+                    "default": "selected-bookmark",
+                    "description": "Defines Jump to Next/Previous Bookmark behavior. **selected-bookmark** (Default): jump based on selected bookmark in editor. **current-line**: jump based on the current selected line number in the editor."
+                },
+                "audit-bookmarks.view.words.hide": {
+                    "category": "view",
+                    "type": "boolean",
+                    "default": false,
+                    "markdownDescription": "Hide tags/trigger words in bookmark view if a comment was provided."
+                },
+                "audit-bookmarks.view.exclude.gitIgnore": {
+                    "category": "view",
+                    "type": "boolean",
+                    "default": false,
+                    "markdownDescription": "Hide items from the bookmark view that match an exclusion defined by a .gitignore file (requires reload)"
+                },
+                "audit-bookmarks.default.words.note": {
+                    "category": "trigger words",
+                    "type": "string",
+                    "default": "@audit-note[\\s]",
+                    "markdownDescription": "Note annotations (blue)."
+                },
+                "audit-bookmarks.default.words.info": {
+                    "category": "trigger words",
+                    "type": "string",
+                    "default": "@audit-info[\\s]",
+                    "markdownDescription": "Info annotations (blue)."
+                },
+                "audit-bookmarks.default.words.gas": {
+                    "category": "trigger words",
+                    "type": "string",
+                    "default": "@audit-gas[\\s]",
+                    "markdownDescription": "Gas annotations (blue)."
+                },
+                "audit-bookmarks.default.words.low": {
+                    "category": "trigger words",
+                    "type": "string",
+                    "default": "@audit-low[\\s]",
+                    "markdownDescription": "Low severity annotations (green)."
+                },
+                "audit-bookmarks.default.words.medium": {
+                    "category": "trigger words",
+                    "type": "string",
+                    "default": "@audit-medium[\\s]",
+                    "markdownDescription": "Medium severity annotations (yellow)."
+                },
+                "audit-bookmarks.default.words.high": {
+                    "category": "trigger words",
+                    "type": "string",
+                    "default": "@audit-high[\\s]",
+                    "markdownDescription": "High severity annotations (orange)."
+                },
+                "audit-bookmarks.default.words.critical": {
+                    "category": "trigger words",
+                    "type": "string",
+                    "default": "@audit-critical[\\s]",
+                    "markdownDescription": "Critical severity annotations (red)."
+                },
+                "audit-bookmarks.exceptions.words.ignore": {
+                    "category": "exceptions",
+                    "type": "string",
+                    "default": "",
+                    "markdownDescription": "A comma-separated list of tags/trigger words (`audit-bookmarks.words`) that will not be decorated."
+                },
+                "audit-bookmarks.exceptions.file.extensions.ignore": {
+                    "category": "exceptions",
+                    "type": "string",
+                    "default": "",
+                    "markdownDescription": "A comma-separated list of file extensions to ignore (e.g. .java)."
+                },
+                "audit-bookmarks.expert.custom.styles": {
+                    "category": "expert",
+                    "type": "object",
+                    "default": {
+                        "default": {
+                            "gutterIconColor": "#157EFB",
+                            "overviewRulerColor": "rgba(21, 126, 251, 0.7)",
+                            "light": {
+                                "fontWeight": "bold"
+                            },
+                            "dark": {
+                                "color": "Chocolate"
+                            }
+                        },
+                        "note": {
+                            "gutterIconColor": "#157EFB",
+                            "overviewRulerColor": "rgba(21, 126, 251, 0.7)",
+                            "light": {
+                                "fontWeight": "bold"
+                            },
+                            "dark": {
+                                "color": "Chocolate"
+                            }
+                        },
+                        "info": {
+                            "gutterIconColor": "#157EFB",
+                            "overviewRulerColor": "rgba(21, 126, 251, 0.7)",
+                            "light": {
+                                "fontWeight": "bold"
+                            },
+                            "dark": {
+                                "color": "Chocolate"
+                            }
+                        },
+                        "gas": {
+                            "gutterIconColor": "#7851A9",
+                            "overviewRulerColor": "rgba(120, 81, 169, 0.7)",
+                            "light": {
+                                "fontWeight": "bold"
+                            },
+                            "dark": {
+                                "color": "Chocolate"
+                            }
+                        },
+                        "low": {
+                            "gutterIconColor": "#2FCE7C",
+                            "overviewRulerColor": "rgba(47, 206, 124, 0.7)",
+                            "light": {
+                                "fontWeight": "bold"
+                            },
+                            "dark": {
+                                "color": "Chocolate"
+                            }
+                        },
+                        "medium": {
+                            "gutterIconColor": "#FFC107",
+                            "overviewRulerColor": "rgba(255, 193, 7, 0.7)",
+                            "light": {
+                                "fontWeight": "bold"
+                            },
+                            "dark": {
+                                "color": "Chocolate"
+                            }
+                        },
+                        "high": {
+                            "gutterIconColor": "#FF9800",
+                            "overviewRulerColor": "rgba(255, 152, 0, 0.7)",
+                            "light": {
+                                "fontWeight": "bold"
+                            },
+                            "dark": {
+                                "color": "Chocolate"
+                            }
+                        },
+                        "critical": {
+                            "gutterIconColor": "#F44336",
+                            "overviewRulerColor": "rgba(244, 67, 54, 0.7)",
+                            "light": {
+                                "fontWeight": "bold"
+                            },
+                            "dark": {
+                                "color": "Chocolate"
+                            }
+                        }
+                    },
+                    "description": "Specify Custom Decoration Profiles",
+                    "properties": {}
+                },
+                "audit-bookmarks.expert.custom.words.mapping": {
+                    "category": "expert",
+                    "type": "object",
+                    "default": {
+                        "note": ["@audit-note[\\s]"],
+                        "info": ["@audit-info[\\s]"],
+                        "gas": ["@audit-gas[\\s]"],
+                        "low": ["@audit-low[\\s]"],
+                        "medium": ["@audit-medium[\\s]"],
+                        "high": ["@audit-high[\\s]"],
+                        "critical": ["@audit-critical[\\s]"]
+                    },
+                    "description": "Assigns tags/trigger words to decoration profiles",
+                    "properties": {}
+                },
+                "audit-bookmarks.search.includes": {
+                    "type": "array",
+                    "default": [
+                        "**/*"
+                    ],
+                    "description": "Glob patterns that defines the files to search for. Only include files you need, DO NOT USE `{**/*.*}` for both perfmormance and avoiding binary files reason.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "description": "A glob pattern that defines the files to search for. Only include files you need, DO NOT USE `**/*.*` for both performance and avoiding binary files reason"
+                            }
+                        ]
+                    }
+                },
+                "audit-bookmarks.search.excludes": {
+                    "type": "array",
+                    "default": [
+                        "**/.git/**",
+                        "**/node_modules/**",
+                        "**/bower_components/**",
+                        "**/dist/**",
+                        "**/build/**",
+                        "**/.vscode/**",
+                        "**/.github/**",
+                        "**/_output/**",
+                        "**/*.min.*",
+                        "**/*.map",
+                        "**/.next/**"
+                    ],
+                    "description": "Glob pattern that defines files and folders to exclude while listing annotations.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "description": "A glob pattern that defines files and folders to exclude while listing annotations"
+                            }
+                        ]
+                    }
+                },
+                "audit-bookmarks.search.maxFiles": {
+                    "type": "number",
+                    "default": 5120,
+                    "description": "Max files for searching"
+                }
+            }
+        }
+    },
+    "dependencies": {
+        "ignore": "^5.2.0",
+        "vscode-uri": "^3.0.3"
+    }
+}
