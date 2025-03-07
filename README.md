@@ -1,7 +1,5 @@
 # Audit Bookmarks
 
-<img width="350" alt="audit_bookmarks_icon" src="images/icon.png">
-
 Navigation facile entre annotations d'audit dans vos fichiers de code.
 
 ## Fonctionnalités
@@ -22,14 +20,12 @@ Navigation facile entre annotations d'audit dans vos fichiers de code.
 
 ## Tour d'horizon
 
-![Interface des signets d'audit](images/screenshot.png)
-
 ## Comment l'utiliser
 
 1. Ajoutez des annotations dans votre code avec les tags supportés:
    ```solidity
    function transfer(address to, uint256 amount) public {
-       // @audit-medium Manque de vérification de l'adresse nulle
+       // @audit-medium Manque de vérification de l'adresse null
        // @audit-gas Possibilité d'optimiser en utilisant unchecked
        balances[msg.sender] -= amount;
        balances[to] += amount;
