@@ -1,7 +1,7 @@
 # Audit Bookmarks
 
 <p align="center">
-  <img alt="audit_bookmarks_icon" src="images/icon.png">
+  <img alt="audit_bookmarks_icon" src="https://github.com/user-attachments/assets/e2255381-1f50-4b7a-8dbb-565e2b9051c3">
 </p>
 
 
@@ -25,7 +25,7 @@ Easy navigation between audit annotations in your code files.
 
 ## Overview
 
-![Audit bookmarks interface](images/preview.png)
+![Audit bookmarks interface](https://github.com/user-attachments/assets/329819bd-f856-419b-ba44-3d7b4527fdf3)
 
 ## How to Use
 
