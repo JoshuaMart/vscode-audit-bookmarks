@@ -1,7 +1,6 @@
 <p align="center">
-  <img alt="audit_bookmarks_icon" src="https://github.com/user-attachments/assets/3ba08d41-3840-4320-8501-2c33838bfabc">
+  <img alt="audit_bookmarks_icon" src="https://github.com/user-attachments/assets/48fb5a74-c19d-4080-b8a9-a36d6262ff89">
 </p>
-
 
 Easy navigation between audit annotations in your code files.
 
