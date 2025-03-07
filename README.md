@@ -22,7 +22,7 @@ Easy navigation between audit annotations in your code files.
 
 ## Overview
 
-![Audit bookmarks interface](images/screenshot.png)
+![Audit bookmarks interface](https://i.ibb.co/gZf9h0xZ/SCR-20250307-opkx.png)
 
 ## How to Use
 
