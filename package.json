@@ -22,6 +22,13 @@
     "categories": [
         "Other"
     ],
+    "bugs": {
+        "url": "https://github.com/JoshuaMart/vscode-audit-bookmarks/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/JoshuaMart/vscode-audit-bookmarks"
+    },
     "activationEvents": [
         "*",
         "onView:auditBookmarksExplorer",
@@ -374,13 +381,27 @@
                     "category": "expert",
                     "type": "object",
                     "default": {
-                        "note": ["@audit-note[\\s]"],
-                        "info": ["@audit-info[\\s]"],
-                        "gas": ["@audit-gas[\\s]"],
-                        "low": ["@audit-low[\\s]"],
-                        "medium": ["@audit-medium[\\s]"],
-                        "high": ["@audit-high[\\s]"],
-                        "critical": ["@audit-critical[\\s]"]
+                        "note": [
+                            "@audit-note[\\s]"
+                        ],
+                        "info": [
+                            "@audit-info[\\s]"
+                        ],
+                        "gas": [
+                            "@audit-gas[\\s]"
+                        ],
+                        "low": [
+                            "@audit-low[\\s]"
+                        ],
+                        "medium": [
+                            "@audit-medium[\\s]"
+                        ],
+                        "high": [
+                            "@audit-high[\\s]"
+                        ],
+                        "critical": [
+                            "@audit-critical[\\s]"
+                        ]
                     },
                     "description": "Assigns tags/trigger words to decoration profiles",
                     "properties": {}
