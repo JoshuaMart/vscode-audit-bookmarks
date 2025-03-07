@@ -1,6 +1,9 @@
 # Audit Bookmarks
 
-<img width="350" alt="audit_bookmarks_icon" src="images/icon.png">
+<p align="center">
+  <img alt="audit_bookmarks_icon" src="images/icon.png">
+</p>
+
 
 Easy navigation between audit annotations in your code files.
 
@@ -22,7 +25,7 @@ Easy navigation between audit annotations in your code files.
 
 ## Overview
 
-![Audit bookmarks interface](https://i.ibb.co/gZf9h0xZ/SCR-20250307-opkx.png)
+![Audit bookmarks interface](images/preview.png)
 
 ## How to Use
 

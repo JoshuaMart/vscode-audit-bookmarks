@@ -16,6 +16,7 @@
         "highlight"
     ],
     "publisher": "JoshuaMart",
+    "icon": "images/icon.png",
     "engines": {
         "vscode": "^1.20.2"
     },
